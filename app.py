@@ -67,6 +67,7 @@ def new_lead():
     company_name = data.get('company_name')
     company_size = data.get('company_size')
     source = data.get('source')
+    message = data.get('message')
 
     if not first_name or not last_name or not email or not company_name or not company_size or not source:
         return _corsify_actual_response(jsonify({'error': 'Missing required fields'})), 400
@@ -79,6 +80,7 @@ def new_lead():
         "company": company_name,
         "hs_lead_status": "NEW",
         "source_url": source,
+        "message": message
     }
 
     contactObject = SimplePublicObjectInputForCreate(
